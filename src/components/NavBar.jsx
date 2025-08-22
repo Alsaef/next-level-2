@@ -13,7 +13,7 @@ const NavBar = () => {
       <div className="navbar bg-base-100 shadow-sm px-4">
         <div className="navbar-start">
           {/* Website Name / Logo */}
-          <a className="btn btn-ghost text-xl normal-case" href="/">EduTeach</a>
+          <a className="btn btn-ghost text-xl normal-case" href="/">Cartify</a>
         </div>
 
         <div className="navbar-center hidden lg:flex">

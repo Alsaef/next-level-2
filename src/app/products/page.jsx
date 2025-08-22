@@ -1,28 +1,15 @@
 // app/products/page.js
 import Image from "next/image";
+import Link from "next/link";
 
-const products = [
-  {
-    id: 1,
-    name: "Smartphone",
-    price: 250,
-    image: "/images/phone.jpg",
-  },
-  {
-    id: 2,
-    name: "Headphones",
-    price: 50,
-    image: "/images/headphones.jpg",
-  },
-  {
-    id: 3,
-    name: "Laptop",
-    price: 800,
-    image: "/images/laptop.jpg",
-  },
-];
+export default async function ProductsPage() {
 
-export default function ProductsPage() {
+  const res = await fetch('https://nest-server-chi.vercel.app/products', {
+    cache: 'no-cache'
+  })
+
+  const products = await res.json()
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold my-6 text-center ">Products</h1>
@@ -41,10 +28,10 @@ export default function ProductsPage() {
               className="rounded-lg object-cover"
             />
             <h2 className="text-lg font-semibold mt-4">{product.name}</h2>
-            <p className="text-gray-600">${product.price}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-              Buy Now
-            </button>
+            <p className="text-gray-600">${product.price} TK</p>
+            <Link href={`/product/${product._id}`} className="btn btn-sm btn-primary">
+              Details
+            </Link>
           </div>
         ))}
       </div>

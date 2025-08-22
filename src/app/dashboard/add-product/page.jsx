@@ -1,11 +1,29 @@
 "use client";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 export default function AddProductPage() {
   const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = (data) => {
-    alert(`Product added: ${data.name}`);
+  const onSubmit = async (data) => {
+
+    const res = await fetch('https://nest-server-chi.vercel.app/product', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    const products = await res.json();
+    console.log("Response:", products);
+
+    Swal.fire({
+      title: `Product added: ${data.name}`,
+      text: "You clicked the button!",
+      icon: "success"
+    });
+    
     reset();
   };
 
@@ -21,6 +39,13 @@ export default function AddProductPage() {
           placeholder="Product Name"
           className="input input-bordered w-full"
           {...register("name", { required: true })}
+        />
+
+        <input
+          type="url"
+          placeholder="Product Image"
+          className="input input-bordered w-full"
+          {...register("image", { required: true })}
         />
         <input
           type="number"

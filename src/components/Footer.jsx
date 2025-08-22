@@ -17,9 +17,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* About Section */}
         <div>
-          <h2 className="text-xl font-bold mb-4">EduTeach</h2>
+          <h2 className="text-xl font-bold mb-4">Cartify</h2>
           <p>
-            EduTeach is your go-to platform to explore and manage products. Stay updated with latest products and add your favorites.
+            Cartify is your go-to platform to explore and manage products. Stay updated with latest products and add your favorites.
           </p>
         </div>
 
